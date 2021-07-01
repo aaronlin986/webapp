@@ -1,18 +1,20 @@
 import {useState} from 'react'
 import '../componentStyles/LoginForm.css'
+import loginService from '../services/Login'
 
-const LoginForm = () => {
+const LoginForm = ({show, toggleShow}) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
     const submitLogin = (e) => {
         e.preventDefault()
+        loginService.login({username, password})
     }
 
     return (
-        <div class='modal'>
-            <div class='modal-content'>
-                <div class='close'>
+        <div className={show}>
+            <div className='modal-content'>
+                <div className='close' onClick={toggleShow}>
                     &times;
                 </div>
                 <form onSubmit={submitLogin}>
