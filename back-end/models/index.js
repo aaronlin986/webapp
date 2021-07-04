@@ -1,12 +1,14 @@
-const Sequelize = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 
 const sequelize = new Sequelize({
     dialect: 'mysql',
     username:"root",
     password:"password", // fill with password
-    database:"localhost",
+    database:"webapp_db",
     host:"localhost"
 });
+
+const db = {};
 
 const models = [
     require('./user'),
@@ -15,7 +17,17 @@ const models = [
 ];
 
 for (const model of models) {
-    model(sequelize);
+    const modelObj = model(sequelize, DataTypes);
+    db[modelObj.name] = modelObj;
 }
 
-module.exports = sequelize;
+Object.keys(db).forEach((modelName) => {
+    if (db[modelName].associate) {
+        db[modelName].associate(db);
+    }
+});
+
+db.Sequelize = Sequelize;
+db.sequelize = sequelize;
+
+module.exports = db;
