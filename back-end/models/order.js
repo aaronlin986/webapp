@@ -1,4 +1,6 @@
-module.exports = (sequelize, DataTypes) => {
+const { DataTypes } = require('sequelize');
+
+module.exports = (sequelize) => {
     const Order = sequelize.define('Order', {
         OrderID: {
             type: DataTypes.INTEGER,
@@ -22,7 +24,9 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         }
     });
-    Order.hasMany(Item, { foreignKey: 'ItemID'});
-    Order.hasOne(User, { foreignKey: 'UserID'});
+    Order.associate = (models) => {
+        Order.hasMany(models.Item, { foreignKey: 'ItemID'});
+        Order.hasOne(models.User, { foreignKey: 'UserID'});
+    }
     return Order;
 }
