@@ -9,6 +9,8 @@ const LoginForm = ({show, toggleShow}) => {
     const submitLogin = (e) => {
         e.preventDefault()
         loginService.login({username, password})
+        setUsername('')
+        setPassword('')
     }
 
     return (

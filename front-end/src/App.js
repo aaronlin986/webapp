@@ -1,6 +1,7 @@
 // import React from 'react'
 import { useState } from "react"
 import LoginForm from "./components/LoginForm"
+import HeaderBar from "./components/HeaderBar"
 
 const App = () => {
   const [showLoginForm, setShowLoginForm] = useState('modal-hide')
@@ -20,9 +21,10 @@ const App = () => {
   
   return (
     <div>
-      Hello World
-      <button onClick={loginPopup}>Sign In</button>
-      <LoginForm show={showLoginForm} toggleShow={toggleShowLoginForm}/>
+      <div>
+        <HeaderBar name='Company Name' loginPopup={loginPopup}/>
+        <LoginForm show={showLoginForm} toggleShow={toggleShowLoginForm}/>
+      </div>
     </div>
   )
 }
