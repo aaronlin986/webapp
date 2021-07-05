@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             unique: true
         },
-        Password: {
+        PasswordHash: {
             type: DataTypes.CHAR(60),
             allowNull: false
         },
