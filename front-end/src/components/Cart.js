@@ -1,17 +1,23 @@
 import Item from './Item'
 
-const Cart = ({items}) => {
+const Cart = ({cart, removeFromCart, decrementItem, incrementItem}) => {
     return (
-        <div>   
+        <div>       
             {/* Each item will have it's own component, 
             which will also have an ID number we can use as a key in li*/}
             <ul>
-                {items.map(({item, count}) => 
+                {cart.map(item => 
                     <li>
-                        <Item name={item.name} count={count}/>
+                        <Item 
+                            item={item}
+                            removeFromCart={removeFromCart}
+                            decrementItem={decrementItem}
+                            incrementItem={incrementItem}
+                        />
                     </li>)
                 }
             </ul>
+            <button>Review</button>
         </div>
     );
 };

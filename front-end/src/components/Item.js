@@ -1,6 +1,13 @@
-const Item = ({name, count}) => {
+const Item = ({item, decrementItem, incrementItem, removeFromCart}) => { 
     return (
-        <p>{name} <span>{count}</span></p>
+        // on hover name, shows img
+        <p>
+            <button onClick={() => removeFromCart(item)}>&times;</button>
+            {item.name} 
+            <button onClick={() => decrementItem(item)}>-</button> 
+            <button onClick={() => incrementItem(item)}>+</button> 
+            <span>{item.count} {item.cost}</span>
+        </p>
     );
 };
 
