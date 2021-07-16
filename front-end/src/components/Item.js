@@ -6,7 +6,7 @@ const Item = ({item, decrementItem, incrementItem, removeFromCart}) => {
             {item.name} 
             <button onClick={() => decrementItem(item)}>-</button> 
             <button onClick={() => incrementItem(item)}>+</button> 
-            <span>{item.count} {item.cost}</span>
+            <span>{item.quantity} {item.cost}</span>
         </p>
     );
 };

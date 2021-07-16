@@ -2,9 +2,11 @@
 import { useState } from "react"
 import LoginForm from "./components/LoginForm"
 import HeaderBar from "./components/HeaderBar"
+import Products from './components/Products'
 import Cart from './components/Cart'
 
 const App = () => {
+  const [products, setProducts] = useState([])
   const [cart, setCart] = useState([])
   const [showLoginForm, setShowLoginForm] = useState('modal-hide')
 
@@ -28,7 +30,7 @@ const App = () => {
   const decrementItem = (item) => {
     setCart(cart.map(i => 
       i.id === item.id 
-      ? {...item, count: item.count - 1} 
+      ? {...item, quantity: item.quantity - 1} 
       : i
     ))
   }
@@ -36,27 +38,34 @@ const App = () => {
   const incrementItem = (item) => {
     setCart(cart.map(i => 
       i.id === item.id
-      ? {...item, count: item.count + 1}
+      ? {...item, quantity: item.quantity + 1}
       : i
     ))
+  }
+
+  const addCart = (item) => {
+    setCart(cart.concat(item))
   }
 
   //Temporary cart
   const items = [
     {
       name: "Item1",
-      count: 2,
-      cost: 4.5
+      quantity: 2,
+      cost: 4.5,
+      id: 1
     },
     {
       name: "Item3",
-      count: 1,
-      cost: 2
+      quantity: 1,
+      cost: 2,
+      id: 2
     },
     {
       name: "Item9",
-      count: 5,
-      cost: 15
+      quantity: 5,
+      cost: 15,
+      id: 3
     }
   ]
   
@@ -65,6 +74,7 @@ const App = () => {
       <div>
         <HeaderBar name='Company Name' loginPopup={loginPopup}/>
         <LoginForm show={showLoginForm} toggleShow={toggleShowLoginForm}/>
+        <Products products={items} addCart={addCart}/>
         <Cart 
           cart={items} 
           removeFromCart={removeFromCart}
