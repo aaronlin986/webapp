@@ -2,7 +2,7 @@ import {useState} from 'react'
 import '../componentStyles/LoginForm.css'
 import loginService from '../services/Login'
 
-const LoginForm = ({show, toggleShow}) => {
+const LoginForm = ({toggleShow}) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
@@ -14,7 +14,7 @@ const LoginForm = ({show, toggleShow}) => {
     }
 
     return (
-        <div className={show}>
+        <div className={'modal-show'}>
             <div className='modal-content'>
                 <div className='close' onClick={toggleShow}>
                     &times;

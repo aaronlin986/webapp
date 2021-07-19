@@ -8,19 +8,10 @@ import Cart from './components/Cart'
 const App = () => {
   const [products, setProducts] = useState([])
   const [cart, setCart] = useState([])
-  const [showLoginForm, setShowLoginForm] = useState('modal-hide')
+  const [showLoginForm, setShowLoginForm] = useState(false)
 
   const toggleShowLoginForm = () => {
-    if(showLoginForm === 'modal-show'){
-      setShowLoginForm('modal-hide')
-    }
-    else{
-      setShowLoginForm('modal-show')
-    }
-  }
-
-  const loginPopup = () => {
-    toggleShowLoginForm()
+    setShowLoginForm(!showLoginForm)
   }
 
   const removeFromCart = (item) => {
@@ -72,8 +63,8 @@ const App = () => {
   return (
     <div>
       <div>
-        <HeaderBar name='Company Name' loginPopup={loginPopup}/>
-        <LoginForm show={showLoginForm} toggleShow={toggleShowLoginForm}/>
+        <HeaderBar name='Company Name' loginPopup={toggleShowLoginForm}/>
+        {showLoginForm && <LoginForm toggleShow={toggleShowLoginForm}/>}
         <Products products={items} addCart={addCart}/>
         <Cart 
           cart={items} 

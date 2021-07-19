@@ -1,6 +1,14 @@
+import { useState } from 'react';
 import Item from './Item'
+import Review from './Review'
 
 const Cart = ({cart, removeFromCart, decrementItem, incrementItem}) => {
+    const [showReview, setShowReview] = useState(false)
+
+    const toggleShowReview = () => {
+        setShowReview(!showReview)
+    }
+
     return (
         <div>       
             <ul>
@@ -12,10 +20,11 @@ const Cart = ({cart, removeFromCart, decrementItem, incrementItem}) => {
                             decrementItem={decrementItem}
                             incrementItem={incrementItem}
                         />
-                    </li>)
-                }
+                    </li>
+                )}
             </ul>
-            <button>Review</button>
+            <button onClick={toggleShowReview}>Review</button>
+            {showReview && <Review cart={cart} toggleShow={toggleShowReview}/>}
         </div>
     );
 };
