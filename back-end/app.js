@@ -22,7 +22,19 @@ app.use('/users', userRouter);
 // app.use('/items', itemRouter);
 // app.use('/orders', orderRouter);
 
-db.sequelize.sync();
+db.sequelize.sync({ 
+  force: true 
+}).then(() => {
+  db.User.create({
+    Username: 'admin',
+    Password: 'admin',
+    IsAdmin: true,
+  }).then(() => {
+    console.log('Admin account created');
+  }).catch(() => {
+    console.log('Admin account exists');
+  });
+});
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
