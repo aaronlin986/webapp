@@ -18,6 +18,8 @@ module.exports = (sequelize, DataTypes) => {
             defaultValue: false
         }
     });
-
+    User.associate = (models) => {
+        User.belongsToMany(models.Item, { through: 'Order', foreignKey: 'UserID' });
+    }
     return User;
 }
