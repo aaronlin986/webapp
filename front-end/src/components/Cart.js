@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import '../componentStyles/Cart.css'
 import Item from './Item'
 import Review from './Review'
 
@@ -10,8 +11,9 @@ const Cart = ({cart, removeFromCart, decrementItem, incrementItem}) => {
     }
 
     return (
-        <div>       
-            <ul>
+        <div className={'cart'}>    
+            <h1>Cart</h1>   
+            <ul className={'cart-list'}>
                 {cart.map(item => 
                     <li key={item.id}>
                         <Item 
