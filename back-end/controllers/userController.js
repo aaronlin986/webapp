@@ -1,6 +1,7 @@
 const sequelize = require('sequelize');
 const models = require('../models');
 const bcrypt = require('bcrypt');
+const authentication = require('../utils/authenticaction');
 
 exports.createUser = async (username, password) => {
     let newUser = {};
@@ -53,5 +54,14 @@ exports.login = async (username, password) => {
             reason: 'User did not input correct password'
         };
     }
-    return { ok: 'Success', user: user };
+
+    const jwtToken = authentication.generateKey(username);
+
+    if(jwtToken == {}) {
+        return {
+            error: 'Unable to generate token',
+            reason: 'Invalid values'
+        }
+    }
+    return { ok: 'Success', access_token: jwtToken };
 }
