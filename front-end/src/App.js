@@ -43,7 +43,7 @@ const App = () => {
     {
       name: "Item1",
       quantity: 2,
-      cost: 4.5,
+      cost: 4,
       id: 1
     },
     {
