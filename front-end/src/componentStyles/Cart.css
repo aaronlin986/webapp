@@ -1,0 +1,38 @@
+.cart{
+    position: fixed;
+    bottom: 0px;
+    right: 10px;
+    width: 30%;
+    border: 2px solid transparent;
+    border-radius: 15px 15px 0px 0px;
+    box-shadow: 0px 0px 10px#bec2c9;
+}
+
+.cart h1{
+    padding: 10px 30px 10px 30px;
+    margin: 0px;
+}
+
+.cart h1:hover{
+    cursor: pointer;
+}
+
+.divider{
+    margin: 0px;
+    border-bottom: 2px solid #bec2c9;
+}
+
+.cart--list {
+    list-style: none;
+    padding-left: 0px;
+}
+
+.cart--list-expand{
+    height: 65vh;
+    transition: height 0.5s ease;
+}
+
+.cart--list-collapse{
+    height: 0vh;
+    transition: height 0.5s ease;
+}

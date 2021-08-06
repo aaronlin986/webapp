@@ -1,0 +1,35 @@
+.item{
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.item--remove{
+    border: none;
+    font-size: 30px;
+    color: red;
+    background-color: transparent;
+    padding: 0px 10px 0px 0px;
+}
+
+.item--info{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.item--amount{
+    width: 30px;
+}
+
+.buttons--circle{
+    display: inline-flex;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: transparent;
+    margin: 0px 5px 0px 0px;
+}
+
+

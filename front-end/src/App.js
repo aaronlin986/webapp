@@ -43,7 +43,7 @@ const App = () => {
     {
       name: "Item1",
       quantity: 2,
-      cost: 4.5,
+      cost: 4,
       id: 1
     },
     {
@@ -67,7 +67,7 @@ const App = () => {
         {showLoginForm && <LoginForm toggleShow={toggleShowLoginForm}/>}
         <Products products={items} addCart={addCart}/>
         <Cart 
-          cart={items} 
+          cart={cart} 
           removeFromCart={removeFromCart}
           decrementItem={decrementItem}
           incrementItem={incrementItem}
