@@ -14,8 +14,8 @@ const LoginForm = ({toggleShow}) => {
     }
 
     return (
-        <div className={'modal-show'}>
-            <div className='modal-content'>
+        <div className={'modal--show'}>
+            <div className='modal--content'>
                 <div className='close' onClick={toggleShow}>
                     &times;
                 </div>
