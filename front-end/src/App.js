@@ -6,7 +6,7 @@ import Products from './components/Products'
 import Cart from './components/Cart'
 import Admin from './components/Admin';
 import {
-    BrowserRouter as Router, Switch, Route, Link, Redirect,
+    BrowserRouter as Router, Switch, Route, Link,
 } from 'react-router-dom';
 import adminAPI from './services/Admin';
 
@@ -88,9 +88,12 @@ const App = () => {
                 <li>
                   <Link to="/">Home</Link>
                 </li>
-                <li>
-                  <Link to="/admin">Admin</Link>
-                </li>
+                {
+                  isAdmin &&
+                  <li>
+                    <Link to="/admin">Admin</Link>
+                  </li>
+                }
               </ul>
             </nav>
 

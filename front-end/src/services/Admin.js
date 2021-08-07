@@ -19,7 +19,7 @@ const admin = {
 
     verifyAdmin: async function verifyAdmin() {
         try {
-            const result = await fetch('/users/verify-admin', {
+            const result = await fetch('/admin/verify-admin', {
                 method: 'GET',
                 credentials: 'include',
                 headers: {

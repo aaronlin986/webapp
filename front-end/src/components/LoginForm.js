@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import '../componentStyles/LoginForm.css'
-import loginService from '../services/Login'
+import userService from '../services/User'
 
 const LoginForm = ({toggleShow}) => {
     const [username, setUsername] = useState('')
@@ -8,7 +8,7 @@ const LoginForm = ({toggleShow}) => {
 
     const submitLogin = (e) => {
         e.preventDefault()
-        loginService.login({username, password})
+        userService.login(username, password)
         setUsername('')
         setPassword('')
     }
