@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import admin from '../services/Admin';
+import CreateUserForm from './CreateUserForm';
 
 const Admin = () => {
     const [successMessage, setSuccessMessage] = useState('');
@@ -21,11 +22,15 @@ const Admin = () => {
         setShowCreateUser(true);
     }
 
+    const toggleShowCreateForm = () => {
+        setShowCreateUser(!showCreateUser)
+    }
+
     return (
         <div>
             { successMessage !== '' && (<div>{successMessage}</div>) }
             { errorMessage !== '' && (<div>{errorMessage}</div>) }
-            { showCreateUser && <div className="createForm">Test</div>}
+            { showCreateUser && <CreateUserForm toggleShow={toggleShowCreateForm} />}
             <div>
                 <h1>Create User</h1>
                 <button onClick={_handleCreate}>Create</button>

@@ -28,3 +28,8 @@
     color: #000;
     cursor: pointer;
 }
+
+.error-message {
+    background-color: #f8d7da;
+    color:#842029;
+}

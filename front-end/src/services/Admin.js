@@ -1,5 +1,5 @@
 const admin = {
-    createUser: async function createUser() {
+    createUser: async function createUser(username, password) {
         try {
             const result = await fetch('/users/create', {
                 method: 'POST',
@@ -7,7 +7,11 @@ const admin = {
                 headers: {
                     Accept: 'application/json',
                     'Content-Type': 'application/json; charset=utf-8',
-                }
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password
+                })
             });
             return await result.json();
         } catch (error) {
