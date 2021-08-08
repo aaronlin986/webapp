@@ -1,36 +1,26 @@
 import {useState} from 'react'
 import '../componentStyles/LoginForm.css'
-import userService from '../services/User'
+import adminService from '../services/Admin'
 
-const LoginForm = (props) => {
+const CreateUserForm = ({toggleShow}) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [errorMessage, setErrorMessage] = useState('');
 
-    const submitLogin = (e) => {
-        e.preventDefault()
-        userService.login(username, password).then((result) => {
-            if (result.error) {
-                setErrorMessage(result.error);
-            }
-            if (result.ok) {
-                localStorage.setItem('username', username);
-                props.setUsername(username);
-                setUsername('');
-                setPassword('');
-                props.toggleShow();
-            }
-        })
+    const createUser = (e) => {
+        e.preventDefault();
+        adminService.createUser(username, password);
+        setUsername('');
+        setPassword('');
+        toggleShow();
     }
 
     return (
         <div className={'modal--show'}>
             <div className='modal--content'>
-                <div className='close' onClick={props.toggleShow()}>
+                <div className='close' onClick={toggleShow}>
                     &times;
                 </div>
-                { errorMessage != '' && <div className='error-message'>{errorMessage}</div>}
-                <form onSubmit={submitLogin}>
+                <form onSubmit={createUser}>
                     <div> 
                         Username: <input 
                                     type='text'
@@ -47,11 +37,11 @@ const LoginForm = (props) => {
                                     placeholder='Enter a password'
                                 />
                     </div>
-                    <button type='submit'>Login</button>
+                    <button type='submit'>Create User</button>
                 </form>
             </div>
         </div>
     )
 }
 
-export default LoginForm
+export default CreateUserForm;

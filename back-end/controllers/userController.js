@@ -1,6 +1,7 @@
 const sequelize = require('sequelize');
 const models = require('../models');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const authentication = require('../utils/authenticaction');
 
 exports.createUser = async (username, password) => {
     let newUser = {};
@@ -24,12 +25,43 @@ exports.createUser = async (username, password) => {
 
 exports.login = async (username, password) => {
     let user = {};
-    user = await models.User.findOne({where: {username}});
-    let accExists = user === null 
-        ? false
-        : bcrypt.compare(password, user.PasswordHash);
-    if(!accExists){
-        return {error: 'Username or password is incorrect', reason: error};
+    try {
+        user = await models.User.findOne({where: {username}});
+    } catch (error) {
+        return {
+            error: 'Invalid user',
+            reason: error
+        }
     }
-    return user;
+    if (!user) {
+        return {
+            error: 'User not found',
+            reason: 'User does not exist in DB'
+        }
+    }
+    let checkPassword = false;
+    try {
+        checkPassword = await bcrypt.compare(password, user.PasswordHash);
+    } catch (error) {
+        return {
+            error: 'Error checking password', 
+            reason: error
+        };
+    }
+    if(!checkPassword){
+        return {
+            error: 'Password is incorrect', 
+            reason: 'User did not input correct password'
+        };
+    }
+
+    const jwtToken = authentication.generateKey(username);
+
+    if(jwtToken == {}) {
+        return {
+            error: 'Unable to generate token',
+            reason: 'Invalid values'
+        }
+    }
+    return { ok: 'Success', access_token: jwtToken };
 }
