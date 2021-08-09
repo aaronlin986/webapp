@@ -37,7 +37,9 @@ const Cart = ({cart, removeFromCart, decrementItem, incrementItem}) => {
                             </li>
                         )}
                 </ul>
-                <button onClick={toggleShowReview}>Review</button>
+                <div className={'cart--actions'}>
+                    <button onClick={toggleShowReview}>Review</button>
+                </div>
             </div>
             {showReview && <Review cart={cart} toggleShow={toggleShowReview}/>}
         </div>

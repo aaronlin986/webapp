@@ -42,21 +42,28 @@ const App = () => {
   const items = [
     {
       name: "Item1",
-      quantity: 2,
       cost: 4,
       id: 1
     },
     {
-      name: "Item3",
-      quantity: 1,
+      name: "Item2",
       cost: 2,
       id: 2
     },
     {
-      name: "Item9",
-      quantity: 5,
+      name: "Item3",
       cost: 15,
       id: 3
+    },
+    {
+      name: "Item4",
+      cost: 1,
+      id: 4
+    },
+    {
+      name: "Item5",
+      cost: 100,
+      id: 5
     }
   ]
   

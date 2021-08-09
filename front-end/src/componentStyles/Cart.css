@@ -24,7 +24,11 @@
 
 .cart--list {
     list-style: none;
-    padding-left: 0px;
+    padding-left: 10px;
+    padding: 10px 0px 10px 10px;
+    margin: 0px;
+    height: 55vh;
+    overflow-y: auto;
 }
 
 .cart--list-expand{
@@ -35,4 +39,8 @@
 .cart--list-collapse{
     height: 0vh;
     transition: height 0.5s ease;
+}
+
+.cart--actions{
+    padding: 10px;
 }
