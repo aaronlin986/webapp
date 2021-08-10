@@ -22,9 +22,5 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         }
     });
-    Order.associate = (models) => {
-        Order.hasMany(models.Item, { foreignKey: 'ItemID'});
-        Order.hasOne(models.User, { foreignKey: 'UserID'});
-    }
     return Order;
 }
