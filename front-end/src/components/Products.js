@@ -1,18 +1,13 @@
 import Product from "./Product"
+import '../componentStyles/Products.css'
 
 const Products = ({products, addCart}) => {
     return (
-        <table>
-            <tbody>
-                <tr>
-                    {products.map(product => 
-                        <td key={product.id}>
-                            <Product product={product} addCart={addCart}/>
-                        </td>
-                    )}
-                </tr>
-            </tbody>
-        </table>
+        <div className={'products'}>
+            {products.map(product => 
+                <Product product={product} addCart={addCart}/>  
+            )}
+        </div>
     )
 }
 

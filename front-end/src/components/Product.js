@@ -1,4 +1,6 @@
 import {useState} from 'react'
+import '../componentStyles/Product.css'
+import sample from '../resources/sample.jpg'
 
 const Product = ({product, addCart}) => {
     const [quantity, setQuantity] = useState(0)
@@ -14,10 +16,10 @@ const Product = ({product, addCart}) => {
     }
     
     return (
-        <div>
-            {/* img goes here */}
+        <div className={'product'}>
             <p>{product.name}</p>
-            {product.cost}
+            <img src={sample} alt='Sample' width='50%' height='50%'/>
+            <p>{product.cost}</p>
             <p>
                 {quantity}
                 <button onClick={decrementQuantity}>-</button> 
