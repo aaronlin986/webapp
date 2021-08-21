@@ -12,7 +12,11 @@ module.exports = (sequelize, DataTypes) => {
         Price: {
             type: DataTypes.INTEGER,
             allowNull: false
-        }
+        },
+        ImageUrl: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
     });
     Item.associate = (models) => {
         Item.belongsToMany(models.User, { through: 'Order', foreignKey: 'ItemID' });

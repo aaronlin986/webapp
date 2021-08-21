@@ -19,4 +19,11 @@ router.get('/verify-admin', async (req, res) => {
     }
 });
 
+router.post('/add-item', (req, res) => {
+    adminController.addItem(req.body.itemName, req.body.itemPrice, req.body.imageUrl).then((result) => {
+        if (result.error) res.status(400);
+        res.send(result);
+    });
+});
+
 module.exports = router;

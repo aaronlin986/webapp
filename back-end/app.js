@@ -24,7 +24,7 @@ app.use(cookieParser());
 app.use('/', indexRouter);
 app.use('/users', userRouter);
 app.use('/admin', adminRouter);
-// app.use('/items', itemRouter);
+app.use('/items', itemRouter);
 // app.use('/orders', orderRouter);
 
 db.sequelize.sync({ 
