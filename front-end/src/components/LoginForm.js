@@ -18,18 +18,22 @@ const LoginForm = (props) => {
                 props.setUsername(username);
                 setUsername('');
                 setPassword('');
-                props.toggleShow();
+                toggleShow();
             }
         })
+    }
+
+    const toggleShow = () => {
+        props.toggleShow();
     }
 
     return (
         <div className={'modal--show'}>
             <div className='modal--content'>
-                <div className='close' onClick={props.toggleShow()}>
+                <div className='close' onClick={toggleShow}>
                     &times;
                 </div>
-                { errorMessage != '' && <div className='error-message'>{errorMessage}</div>}
+                { errorMessage !== '' && <div className='error-message'>{errorMessage}</div>}
                 <form onSubmit={submitLogin}>
                     <div> 
                         Username: <input 
