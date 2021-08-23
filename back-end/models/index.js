@@ -3,7 +3,7 @@ const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = new Sequelize({
     dialect: 'mysql',
     username:"root",
-    password:"password", // fill with password
+    password:"abc123", // fill with password
     database:"webapp_db",
     host:"localhost"
 });
@@ -13,7 +13,8 @@ const db = {};
 const models = [
     require('./user'),
     require('./item'),
-    require('./order')
+    require('./order'),
+    require('./OrderItems')
 ];
 
 for (const model of models) {

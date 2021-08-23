@@ -8,7 +8,7 @@ const indexRouter = require('./routes/index');
 const userRouter = require('./routes/userRouter');
 const adminRouter = require('./routes/adminRouter');
 // const itemRouter = require('./routes/itemRouter');
-// const orderRouter = require('./routes/orderRouter');
+const orderRouter = require('./routes/orderRouter');
 
 const app = express();
 
@@ -25,7 +25,7 @@ app.use('/', indexRouter);
 app.use('/users', userRouter);
 app.use('/admin', adminRouter);
 // app.use('/items', itemRouter);
-// app.use('/orders', orderRouter);
+app.use('/orders', orderRouter);
 
 db.sequelize.sync({ 
   force: true 

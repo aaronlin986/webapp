@@ -1,13 +1,9 @@
 module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define('User', {
-        UserID: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true
-        },
         Username: {
             type: DataTypes.STRING,
-            unique: true
+            unique: true,
+            primaryKey: true
         },
         PasswordHash: {
             type: DataTypes.CHAR(60),
@@ -19,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
     User.associate = (models) => {
-        User.belongsToMany(models.Item, { through: 'Order', foreignKey: 'UserID' });
+        User.belongsToMany(models.Item, { through: 'Order', foreignKey: 'Username' });
     }
     return User;
 }

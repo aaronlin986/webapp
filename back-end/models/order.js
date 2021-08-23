@@ -5,22 +5,13 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true,
             primaryKey: true
         },
-        UserID: {
-            type: DataTypes.INTEGER,
+        Username: {
+            type: DataTypes.STRING,
             allowNull: false
         },
-        ItemID: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        ItemQuantity: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        Total: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        }
     });
+    Order.associate = (models) => {
+        Order.belongsToMany(models.User, { through: 'OrderItems', foreignKey: 'OrderID' });
+    }
     return Order;
 }
