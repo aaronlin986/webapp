@@ -1,4 +1,10 @@
+import OrderService from '../services/Order'
+
 const Review = ({cart, toggleShow}) => {
+    const submitOrder = () => {
+        OrderService.submitOrder(cart)
+    }
+
     return (
         <div className={'modal--show'}>
             <div className='modal--content'>
@@ -16,7 +22,7 @@ const Review = ({cart, toggleShow}) => {
                         </li>
                     )}
                 </ul>
-                <button>Submit</button>
+                <button onClick={submitOrder}>Submit</button>
             </div>
         </div>
     )

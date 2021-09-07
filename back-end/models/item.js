@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
     Item.associate = (models) => {
-        Item.belongsToMany(models.User, { through: 'Order', foreignKey: 'ItemID' });
+        Item.belongsToMany(models.Order, { through: 'OrderItems', foreignKey: 'ItemID' });
     }
     return Item;
 }
