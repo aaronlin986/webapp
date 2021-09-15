@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import Admin from './components/Admin';
 import Home from './components/Home';
+import InventoryUpdate from './components/InventoryUpdate';
 import './componentStyles/App.css'
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
       <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/admin" component={Admin} />
+          <Route path="/admin/inventory" component={InventoryUpdate}/>
       </Switch>
     </Router>
   )

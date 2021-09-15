@@ -37,6 +37,18 @@ const admin = {
                 error: error.message
             }
         }
+    },
+
+    addToInventory: async (name, cost, id) => {
+        try{
+            // const result = await post('/admin/inventory'), {
+
+            // }
+        } catch(error){
+            return {
+                error: error.message
+            }
+        }
     }
 }
 

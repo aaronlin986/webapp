@@ -22,4 +22,28 @@ exports.verifyAdmin = async (username) => {
     return true;
 };
 
+exports.addToInventory = async (name, cost, id) => {
+    let newItem = {};
+    try{
+        let itemExists = await models.Item.findOne({where: {ItemID: id}})
+        if(itemExists){
+            return {
+                error: 'Failed to add item to inventory',
+                reason: 'Item already exists'
+            }
+        }
+        newItem = await models.Item.create({
+            ItemName: name,
+            Price: cost,
+            ItemID: id
+        })
+    } catch(error) {
+        return {
+            error: 'Failed to add item to inventory',
+            reason: error
+        }
+    }
+    return {ok: 'Success', item: newItem}
+};
+
 
