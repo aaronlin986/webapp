@@ -30,6 +30,11 @@ const InventoryUpdate = () => {
     return (
         <div>
             <Notification message={message}/>
+            <select>
+                <option>Add an item</option>
+                <option>Delete an item</option>
+                <option>Update an item</option>
+            </select>
             <h2>Add to Inventory</h2>
             <form>
                 <div className='info'>
