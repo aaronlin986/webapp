@@ -1,0 +1,12 @@
+.notification {
+    background-color: limegreen;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.notification--text {
+    margin: 0px;
+    height: 100px;
+}
