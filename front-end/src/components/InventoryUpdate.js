@@ -1,13 +1,10 @@
 import React, {useState} from 'react';
-import '../componentStyles/InventoryUpdate.css'
-import adminService from '../services/Admin'
 import Notification from './Notification';
+import InventoryAdd from './InventoryAdd';
 
 const InventoryUpdate = () => {
-    const [name, setName] = useState('')
-    const [cost, setCost] = useState('')
-    const [id, setId] = useState('')
     const [message, setMessage] = useState('Vestibulum eu ante lacus. Duis vitae velit semper, tincidunt neque ')
+    const [mode, setMode] = useState('Add')
 
     const createNotification = (message) => {
         setMessage(message)
@@ -16,51 +13,29 @@ const InventoryUpdate = () => {
         }, 3000)
     }
 
-    const handleAddInventory = () => {
-        adminService.addToInventory(name, cost, id).then((result) => {
-            if(result.error){
-                createNotification(result.error.reason)
-            }
-            if(result.ok){
-                createNotification('Successfully added item to inventory')
-            }
-        })
+    const modeReturn = () => {
+        if(mode === 'Add'){
+            return <InventoryAdd createNotification={createNotification}/>;
+        }
+        else if(mode === 'Delete'){
+            return 
+        }
+        else {
+            return 
+        }
     }
 
     return (
         <div>
             <Notification message={message}/>
-            <select>
-                <option>Add an item</option>
-                <option>Delete an item</option>
-                <option>Update an item</option>
+            <select onChange={(e) => setMode(e.target.value)}>
+                <option value='Add'>Add an item</option>
+                <option value='Delete'>Delete an item</option>
+                <option value='Update'>Update an item</option>
             </select>
-            <h2>Add to Inventory</h2>
-            <form>
-                <div className='info'>
-                    Item Name: <input
-                                    type="text"
-                                    value={name}
-                                    placeholder="Enter item name"
-                                    onChange={({target}) => setName(target.value)}
-                            />
+            {modeReturn()}
 
-                </div>
-                <div className='info'>
-                    Cost: <input
-                                type="text"
-                                value={cost}
-                                placeholder="Enter item cost"
-                                onChange={({target}) => setCost(target.value)}
-                        />
-                </div>
-                <div className='info'>
-                    Select an image: <input
-                                        type="file"
-                                    />
-                </div>
-            </form>
-            <button onClick={handleAddInventory}>Add to inventory</button>
+            
         </div>
     )
 }

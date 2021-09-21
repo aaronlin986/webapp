@@ -1,5 +1,4 @@
 .notification {
-    background-color: limegreen;
     margin: 0px;
     padding: 0px;
     display: flex;
@@ -7,6 +6,9 @@
 }
 
 .notification--text {
+    background-color: limegreen;
     margin: 0px;
-    height: 100px;
+    padding: 10px;
+    height: 20px;
 }
+
