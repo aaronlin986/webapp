@@ -49,7 +49,18 @@ const admin = {
                 error: error.message
             }
         }
-    }
+    },
+
+    deleteFromInventory: async () => {
+        try{
+
+        } catch(error){
+            return {
+                error: error.message
+            }
+        }
+
+    },
 }
 
 export default admin;
