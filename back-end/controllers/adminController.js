@@ -46,4 +46,24 @@ exports.addToInventory = async (name, cost, id) => {
     return {ok: 'Success', item: newItem}
 };
 
+exports.deleteFromInventory = async (id) => {
+    try{
+        let foundItem = await models.Item.findOne({where: {ItemID: id}})
+        if(foundItem){
+            await foundItem.destroy();
+        }
+        else{
+            return {
+                error: 'Failed to delete item from inventory',
+                reason: 'Item with given ID cannot be found'
+            }
+        }
+        return {ok: 'Success', item: foundItem}
+    } catch(error) {
+        return {
+            error: 'Failed to delete item from inventory',
+            reason: error
+        }
+    }
+}
 
