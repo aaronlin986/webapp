@@ -95,6 +95,6 @@ router.delete('/inventory', async (req, res) => {
             })
         }
     }
-})
+});
 
 module.exports = router;

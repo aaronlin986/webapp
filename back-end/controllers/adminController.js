@@ -80,5 +80,25 @@ exports.deleteFromInventory = async (id) => {
             reason: error
         }
     }
+};
+
+exports.updateFromInventory = async (id, name, cost) => {
+    try {
+        let foundItem = await this.searchInventory(id);
+        if(foundItem.ok){
+            foundItem.name = name;
+            foundItem.cost = cost;
+            await foundItem.save();
+        }
+        else{
+            return foundItem;
+        }
+        return {ok: 'Success', item: foundItem}
+    } catch(error){
+        return {
+            error: 'Failed to update item from inventory',
+            reason: error
+        }
+    }
 }
 

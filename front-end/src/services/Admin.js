@@ -39,6 +39,16 @@ const admin = {
         }
     },
 
+    searchInventory: async (id) => {
+        try{
+
+        } catch(error){
+            return {
+                error: error.message
+            }
+        }
+    },
+
     addToInventory: async (name, cost, id) => {
         try{
             // const result = await post('/admin/inventory'), {
@@ -51,7 +61,7 @@ const admin = {
         }
     },
 
-    deleteFromInventory: async () => {
+    deleteFromInventory: async (id) => {
         try{
 
         } catch(error){
@@ -61,6 +71,16 @@ const admin = {
         }
 
     },
+
+    updateFromInventory: async (id, name, cost) => {
+        try{
+
+        } catch(error){
+            return {
+                error: error.message
+            }
+        }
+    }
 }
 
 export default admin;
