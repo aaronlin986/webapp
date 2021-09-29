@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 import adminService from '../services/Admin';
+import InventoryProduct from '../components/InventoryProduct'
 import '../componentStyles/InventoryDelete.css'
 
 const InventoryDelete = ({createNotification}) => {
     const [id, setId] = useState('')
+    const [searchResult, setSearchResult] = useState({})
 
     const handleDelete = () => {
         adminService.deleteFromInventory().then((result) => {
@@ -12,6 +14,18 @@ const InventoryDelete = ({createNotification}) => {
             }
             if(result.ok){
                 createNotification('Successfully deleted item from inventory')
+            }
+        })
+    }
+
+    const handleSearch = (val) => {
+        setId(val)
+        adminService.searchInventory(id).then((result) => {
+            if(result.error){
+
+            }
+            if(result.ok){
+                setSearchResult(result.item)
             }
         })
     }
@@ -25,10 +39,11 @@ const InventoryDelete = ({createNotification}) => {
                                     type="number"
                                     value={id}
                                     placeholder='Enter Product ID number'
-                                    onChange={({target}) => setId(target.value)}
+                                    onChange={({target}) => handleSearch(target.value)}
                                 />
                 </div>
             </form>
+            {searchResult && <InventoryProduct product={searchResult}/>}
             <button onClick={handleDelete}>Search and Delete</button>
         </div>
     );

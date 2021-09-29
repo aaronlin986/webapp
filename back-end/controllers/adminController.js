@@ -22,6 +22,24 @@ exports.verifyAdmin = async (username) => {
     return true;
 };
 
+exports.searchInventory = async (id) => {
+    try{
+        let foundItem = await models.Item.findOne({where: {ItemID: id}});
+        if(foundItem){
+            return {ok: 'Success', item: foundItem};
+        }
+        return {
+            error: 'Failed to search for item with given ItemID',
+            reason: "Couldn't find item with given ItemID"
+        }
+    } catch(error){
+        return {
+            error: 'Failed to search inventory',
+            reason: error
+        }
+    }
+}
+
 exports.addToInventory = async (name, cost, id) => {
     let newItem = {};
     try{
@@ -48,15 +66,12 @@ exports.addToInventory = async (name, cost, id) => {
 
 exports.deleteFromInventory = async (id) => {
     try{
-        let foundItem = await models.Item.findOne({where: {ItemID: id}})
-        if(foundItem){
-            await foundItem.destroy();
+        let foundItem = await this.searchInventory(id)
+        if(foundItem.ok){
+            await foundItem.item.destroy();
         }
         else{
-            return {
-                error: 'Failed to delete item from inventory',
-                reason: 'Item with given ID cannot be found'
-            }
+            return foundItem
         }
         return {ok: 'Success', item: foundItem}
     } catch(error) {
