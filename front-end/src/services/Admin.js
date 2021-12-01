@@ -41,7 +41,15 @@ const admin = {
 
     searchInventory: async (id) => {
         try{
-
+            const result = await fetch('/admin/inventory', {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json; charset=utf-8',
+                }
+            });
+            return await result.json();
         } catch(error){
             return {
                 error: error.message

@@ -17,8 +17,8 @@ const Product = ({product, addCart}) => {
     
     return (
         <div className={'product'}>
-            <p>{product.name}</p>
             <img src={sample} alt='Sample' width='50%' height='50%'/>
+            <p>{product.name}</p>
             <p>{product.cost}</p>
             <p>
                 {quantity}

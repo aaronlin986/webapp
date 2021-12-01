@@ -45,6 +45,18 @@ const Home = () => {
         quantity: 5,
         cost: 15,
         id: 3
+      },
+      {
+        name: "Item2",
+        quantity: 9,
+        cost: 100,
+        id: 4
+      },
+      {
+        name: "Item5",
+        quantity: 5,
+        cost: 5,
+        id: 5
       }
     ];
 

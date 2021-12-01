@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Notification from './Notification';
 import InventoryAdd from './InventoryAdd';
 import InventoryDelete from './InventoryDelete';
+import InventoryModify from './InventoryModify';
 
 const InventoryUpdate = () => {
     const [message, setMessage] = useState('Vestibulum eu ante lacus. Duis vitae velit semper, tincidunt neque ')
@@ -22,7 +23,7 @@ const InventoryUpdate = () => {
             return <InventoryDelete createNotification={createNotification}/>
         }
         else{
-            return 
+            return <InventoryModify createNotification={createNotification}/>
         }
     }
 

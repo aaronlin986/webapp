@@ -2,11 +2,11 @@ import React, {useState} from 'react';
 import adminService from '../services/Admin';
 import InventoryProduct from './InventoryProduct';
 
-const InventoryModify = () => {
+const InventoryModify = ({createNotification}) => {
     const [id, setId] = useState('')
     const [name, setName] = useState('')
     const [cost, setCost] = useState('')
-    const [searchResult, setSearchResult] = useState({})
+    const [searchResult, setSearchResult] = useState()
 
     const handleUpdate = () => {
         adminService.updateFromInventory(id, name, cost).then((result) => {

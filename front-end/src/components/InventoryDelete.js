@@ -5,10 +5,10 @@ import '../componentStyles/InventoryDelete.css'
 
 const InventoryDelete = ({createNotification}) => {
     const [id, setId] = useState('')
-    const [searchResult, setSearchResult] = useState({})
+    const [searchResult, setSearchResult] = useState()
 
     const handleDelete = () => {
-        adminService.deleteFromInventory().then((result) => {
+        adminService.deleteFromInventory(id).then((result) => {
             if(result.error){
                 createNotification(result.error.reason)
             }

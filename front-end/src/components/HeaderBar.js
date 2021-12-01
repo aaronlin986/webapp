@@ -1,5 +1,5 @@
-
 import { useState, useEffect } from 'react';
+import '../componentStyles/HeaderBar.css';
 import adminAPI from '../services/Admin'
 import {
     Link
@@ -16,21 +16,14 @@ const HeaderBar = ({name, loginPopup, username}) => {
       })
     });
     
-    const headerStyles = {
-        display: "flex",
-        justifyContent: "space-between",
-        backgroundColor: "cornflowerblue",
-        alignItems: "center"
-    }
-    
     return (
-        <div style={headerStyles}>
-            <h1 style={{marginLeft: "1rem"}}>{name}</h1>
-            <div>
-                <Link to="/" style={{marginRight: "1rem"}}>Home</Link>
+        <div class="container">
+            <h1 id="company">{name}</h1>
+            <div class="login-container">
+                {/* <Link to="/" style={{marginRight: "1rem"}}>Home</Link> */}
                 { isAdmin && <Link to="/admin" style={{marginRight: "1rem"}}>Admin</Link> }
                 { username == null 
-                  ? ( <button style={{float: 'right', marginRight: "1rem"}} onClick={loginPopup}>Sign In</button> )
+                  ? ( <button id="login" onClick={loginPopup}>LOGIN</button> )
                   : ( <span style={{marginRight: "1rem"}}>{username}</span>) }
             </div>
         </div>

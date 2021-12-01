@@ -32,6 +32,7 @@ router.get('/inventory', async (req, res) => {
 
         if(result){
             const status = await adminController.searchInventory(req.body.id);
+            console.log(status);
             if(status.error){
                 res.status(400);
             } 
