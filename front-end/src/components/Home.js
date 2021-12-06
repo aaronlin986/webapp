@@ -5,6 +5,16 @@ import Cart from './Cart'
 const Home = () => {
     const [products, setProducts] = useState([])
     const [cart, setCart] = useState([])
+    const [productsView, setProductsView] = useState('products')
+
+    const toggleView = () => {
+      if(productsView === 'products'){
+        setProductsView('products-expanded')
+      }
+      else{
+        setProductsView('products')
+      }
+    }
   
     const removeFromCart = (item) => {
       setCart(cart.filter(i => i.id !== item.id))
@@ -66,12 +76,13 @@ const Home = () => {
 
     return (
         <div>
-            <Products products={items} addCart={addCart}/>
+            <Products products={items} addCart={addCart} productsView={productsView}/>
             <Cart 
                 cart={cart} 
                 removeFromCart={removeFromCart}
                 decrementItem={decrementItem}
                 incrementItem={incrementItem}
+                toggleView={toggleView}
             />
         </div>
     )

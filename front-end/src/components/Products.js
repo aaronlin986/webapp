@@ -1,9 +1,9 @@
 import Product from "./Product"
 import '../componentStyles/Products.css'
 
-const Products = ({products, addCart}) => {
+const Products = ({products, addCart, productsView}) => {
     return (
-        <div className={'products'}>
+        <div className={productsView}>
             {products.map(product => 
                 <Product product={product} addCart={addCart}/>  
             )}

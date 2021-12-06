@@ -1,8 +1,21 @@
 .products {
+    position: relative;
+    left: 15%;
     display: flex;
     background-color: #EEEFEE;
     width: 70%;
-    margin: auto;
     flex-wrap: wrap;
     justify-content: space-around;
+    transition: all 0.5s ease;
+}
+
+.products-expanded{
+    position: relative;
+    display: flex;
+    background-color: #EEEFEE;
+    width: 68%; 
+    left: 0;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    transition: all 0.5s ease;
 }
