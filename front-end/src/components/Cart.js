@@ -23,8 +23,29 @@ const Cart = ({cart, removeFromCart, decrementItem, incrementItem, toggleView}) 
     }
 
     return (
-        <div className={`${collapse}`} onClick={toggleCollapse}>
-            
+        <div className={`${collapse}`} onClick={toggleCollapse}>    
+            {collapse == "cart-button-expanded" && 
+                <div>
+                    <h1 onClick={toggleCollapse}>Cart</h1>   
+                    <div>
+                        <p className='divider'></p>
+                        <ul className='cart--list'>
+                                {cart.map(item => 
+                                    <li key={item.id}>
+                                        <Item 
+                                            item={item}
+                                            removeFromCart={removeFromCart}
+                                            decrementItem={decrementItem}
+                                            incrementItem={incrementItem}
+                                        />
+                                    </li>
+                                )}
+                        </ul>
+                    </div>
+                    <div className='cart--actions'>
+                        <button onClick={toggleShowReview}>Review</button>
+                    </div>
+                </div>}
         </div>
         // <div className={'cart'}>    
         //     <h1 onClick={toggleCollapse}>Cart</h1>   

@@ -1,11 +1,10 @@
 .container{
     display: flex;
-    background-color: #3B3F3B;
+    background-color: #595959;
     width: 100%;
     height: 100px;
     justify-content: space-between;
-    align-items: center;
-    opacity: 0.9;
+    align-items: center;;
 }
 
 #company{
@@ -20,7 +19,7 @@
 
 #login{
     border: none;
-    background-color: #3B3F3B;
+    background-color: #595959;
     color: #FFFFFF;
     width: 100%;
     height: 100%;

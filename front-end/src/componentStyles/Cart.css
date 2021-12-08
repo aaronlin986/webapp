@@ -15,14 +15,46 @@
 
 .cart-button-expanded{
     position: fixed;
-    bottom: 20vh;
+    bottom: 0vh;
     right: 0px;
     width: 30%;
-    height: 65vh;
+    height: 85vh;
     background-color: #eeefee;
     border-radius: 15px 0px 0px 15px;
     transition: all 0.5s ease;
+}
 
+h1{
+    padding: 10px 30px 10px 30px;
+    margin: 0px;
+}
+
+h1:hover{
+    cursor: pointer;
+}
+
+.divider{
+    margin: 0px;
+    border-bottom: 2px solid #bec2c9;
+}
+
+.cart--list {
+    list-style: none;
+    padding-left: 10px;
+    padding: 10px 0px 10px 10px;
+    margin: 0px;
+    height: 68vh;
+    overflow-y: auto;
+}
+
+.cart--actions{
+    float: right;
+    margin-right: 20px;
+}
+
+.cart--actions > button{
+    height: 35px;
+    width: 70px;
 }
 /* .cart{
     position: fixed;
